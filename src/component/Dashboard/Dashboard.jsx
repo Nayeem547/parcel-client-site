@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import {  FaBookOpen, FaHome } from 'react-icons/fa';
+import {  FaBookOpen, FaBoxOpen, FaHome, FaShoppingBag, FaShoppingCart, FaUserCheck } from 'react-icons/fa';
 const Dashboard = () => {
     return (
         
@@ -7,23 +7,39 @@ const Dashboard = () => {
             <div className=' w-64 min-h-screen bg-orange-400 '>
               <ul className='menu p-4'>
 
+              <li><NavLink  to="/dashboard/allParcel" > 
+                <FaShoppingBag></FaShoppingBag> All Parcel
+                </NavLink></li>
+
               <li><NavLink  to="/dashboard/adminHome" > 
                 <FaHome></FaHome> Admin Home
                 </NavLink></li>
+
+              <li><NavLink  to="/dashboard/allUsers" > 
+                <FaHome></FaHome> All Users
+                </NavLink></li>
+
+
+
+                <div className="divider"></div>
 
               <li><NavLink  to="/dashboard/booking" > 
                 <FaBookOpen></FaBookOpen> Book a Parcel
                 </NavLink></li>
 
               <li><NavLink  to="/dashboard/myParcel" > 
-                <FaBookOpen></FaBookOpen> My Parcel
+                <FaShoppingCart></FaShoppingCart> My Parcel
                 </NavLink></li>
 
               <li><NavLink  to="/dashboard/myProfile" > 
-                <FaBookOpen></FaBookOpen> My Profile Menu
+                <FaUserCheck></FaUserCheck> My Profile Menu
                 </NavLink></li>
 
                 <div className="divider" ></div>
+
+                <li><NavLink  to="/" > 
+                <FaHome></FaHome> Home
+                </NavLink></li>
 
 
               </ul>

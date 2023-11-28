@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { Map, Marker } from "pigeon-maps";
 import { Controller, useForm } from "react-hook-form";
@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 import useaxiosSecure from "../Hook/useaxiosSecure";
 
 const BookParcelForm = () => {
-  const { control, register, handleSubmit } = useForm();
+  const { control, register, handleSubmit, setValue } = useForm();
   const { user } = useContext(AuthContext);
   const axiosSecure = useaxiosSecure();
 
@@ -57,10 +57,23 @@ const BookParcelForm = () => {
   // )
   //   console.log(data);
   //   }
+  
 
   const users = {
     name: user?.displayName,
     email: user?.email,
+  };
+
+  const calculatePrice = (weight) => {
+    if (weight === 1) {
+      return 50;
+    } else if (weight === 2) {
+      return 100;
+    } else if (weight <= 0) {
+      return 0;
+    } else if (weight >= 3) {
+      return 150;
+    }
   };
 
   const onSubmit = async (data) => {
@@ -82,6 +95,7 @@ const BookParcelForm = () => {
       receiversNumber: data.receiversNumber,
       parcelAdress: data.parcelAdress,
       date: data.date ? data.date.toISOString() : null,
+      bookingDate: data.bookingDate ? data.bookingDate.toISOString() : null,
       weight: parseFloat(data.weight),
       latitude: data.latitude,
       longitude: data.longitude,
@@ -133,33 +147,33 @@ const BookParcelForm = () => {
   //     }
   //   };
 
-  //    const [Price, setPrice] = useState();
+    //  const [Price, setPrice] = useState(0);
 
-  //    const [weight, setWeight] = useState(0);
+    //  const [weight, setWeight] = useState(0);
 
-  //   const handleParcelWeightChange = (e) => {
-  //     const weight = parseFloat(e.target.value);
-  //     setFormData({
-  //       ...formData,
-  //       parcelWeight: weight,
+    // const handleParcelWeightChange = (e) => {
+    //   const weight = parseFloat(e.target.value);
+    //   setFormData({
+    //     ...formData,
+    //     parcelWeight: weight,
 
-  //     });
-  //     setPrice(calculatePrice(weight));
+    //   });
+    //   setPrice(calculatePrice(weight));
 
-  //   };
+    // };
 
-  //   const calculatePrice = (weight) => {
-  //     if (weight === 1) {
-  //       return 50;
-  //     } else if (weight === 2) {
-  //       return 100;
-  //     } else if(weight <= 0){
-  //         return 0;
-  //     }
-  //      else if(weight >= 3) {
-  //       return 150;
-  //     }
-  //   };
+    // const calculatePrice = (weight) => {
+    //   if (weight === 1) {
+    //     return 50;
+    //   } else if (weight === 2) {
+    //     return 100;
+    //   } else if(weight <= 0){
+    //       return 0;
+    //   }
+    //    else if(weight >= 3) {
+    //     return 150;
+    //   }
+    // };
 
   //Date Picker
   //   const [startDate, setStartDate] = useState(new Date());
@@ -180,6 +194,10 @@ const BookParcelForm = () => {
   //       const handleDateChange = (date) => {
   //         setSelectedDate(date);
   //       };
+
+  useEffect(() => {
+    setValue("bookingDate", new Date());
+  }, [setValue]);
 
   return (
     <div className=" flex mx-auto   ">
@@ -260,6 +278,15 @@ const BookParcelForm = () => {
               className="input input-bordered "
             />
           </div>
+
+          <div className="form-control  ">
+            <label className="label">
+              <span className="label-text">Receivers Phone Number</span>
+            </label>
+            <input {...register("bookingDate")}  type="text" readOnly />
+          </div>
+
+
         </div>
 
         <div className=" flex gap-6 p-6 ">
@@ -322,35 +349,35 @@ const BookParcelForm = () => {
           onChange={handleParcelWeightChange}
         />
       </label> */}
-          <div className="form-control  ">
-            <label className="label">
-              <span className="label-text">Parcel Weight (kg):</span>
-            </label>
+           <div className="form-control">
+        <label className="label">
+          <span className="label-text">Parcel Weight (kg):</span>
+        </label>
+        <input
+          {...register('weight')}
+          type="number"
+          name="parcelWeight"
+          placeholder="weight"
 
-            <input
-              {...register("weight")}
-              type="number"
-              name="parcelWeight"
-              className="input input-bordered "
-            />
-          </div>
-          {/* <p>Price: {formData.price} Tk</p> */}
+        />
+      </div>
 
-          <div className="form-control flex flex-row  ">
-            <label className="label">
-              <span className="label-text text-xl"> Price: $ </span>
-            </label>
-
-            <input
-              {...register("price")}
-              type="number"
-              name="price"
-              className=" text-red-600    "
-            />
-          </div>
-        </div>
-
+      <div className="form-control flex flex-row">
+        <label className="label">
+          <span className="label-text text-xl"> Price: $ </span>
+        </label>
+        <input
+          {...register('price')}
+          type="number"
+          name="price"
+          placeholder="price"
+          className="text-red-600"
+          
+        />
+      </div>
         {/* Display Map */}
+
+        </div>
 
         <div className=" flex flex-col space-y-5 ">
           {formData.deliveryAddressLatitude &&

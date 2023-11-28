@@ -5,6 +5,9 @@ import SignUp from "../AuthProvider/SignUp";
 import Dashboard from "../Dashboard/Dashboard";
 import BookParcelForm from "../Dashboard/BookParcelForm";
 import MyParcel from "../Dashboard/MyParcel";
+import MyProfile from "../Dashboard/MyProfile";
+import AllParcel from "../Dashboard/AllParcel";
+import AllUsers from "../Dashboard/AllUsers";
 
 
 
@@ -34,6 +37,18 @@ export const router = createBrowserRouter([
             {
                 path: 'myParcel',
                 element: <MyParcel></MyParcel>
+            },
+            {
+                path: 'myProfile',
+                element: <MyProfile></MyProfile>
+            },
+            {
+                path: 'allParcel',
+                element: <AllParcel></AllParcel>
+            },
+            {
+                path: 'allUsers',
+                element: <AllUsers></AllUsers>
             }
         ]
     }

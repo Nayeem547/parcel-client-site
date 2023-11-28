@@ -1,12 +1,12 @@
 import React from 'react';
 import useCart from '../Hook/useCart';
 import { FaTrashAlt } from 'react-icons/fa';
- import useaxiosSecure from '../Hook/useaxiosSecure';
 import Swal from 'sweetalert2';
+import UseAxiosPublic from '../Hook/UseAxiosPublic';
 
 const MyParcel = () => {
     const [cart, refetch] = useCart();
-    const axiosSecure = useaxiosSecure();
+    const axiosPublic = UseAxiosPublic();
 
 
     const handleDelete = id => {
@@ -25,7 +25,7 @@ const MyParcel = () => {
             //     text: "Your file has been deleted.",
             //     icon: "success"
             //   });
-            axiosSecure.delete(`/order/${id}`)
+            axiosPublic.delete(`/order/${id}`)
             .then(res => {
                 console.log(res);
                 if(res.data.deletedCount > 0 ){
@@ -87,6 +87,7 @@ const MyParcel = () => {
                 </td>
                 <td>{item.date}</td>
                 <td> $</td>
+                <td>{item.bookingDate}</td>
                 <th>
                  
                  
