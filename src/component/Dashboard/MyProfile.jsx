@@ -51,7 +51,7 @@ const MyProfile = () => {
     };
     return (
         <div>
-            <div>
+            <div className=' bg-blue-950 w-[400px] rounded-xl shadow-2xl '>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                 <div>
@@ -85,6 +85,7 @@ const MyProfile = () => {
                   defaultValue={user?.email}
                   className="input input-bordered"
                   required
+                  readOnly
                 />
               </div>
                 </div>
@@ -92,7 +93,7 @@ const MyProfile = () => {
                 <div className=" mt-8 text-center ">
             <input  
           type="submit"
-          value="Purchase"
+          value="Update"
           className=" btn btn-block mt-8 bg-slate-800 text-white "
         />
                 

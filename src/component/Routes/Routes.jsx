@@ -10,6 +10,7 @@ import AllParcel from "../Dashboard/AllParcel";
 import AllUsers from "../Dashboard/AllUsers";
 import ManageButton from "../Dashboard/ManageButton";
 import Login from "../AuthProvider/Login";
+import MyDeliveryList from "../Dashboard/MyDeliveryList";
 
 
 
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
             {
                 path: 'manageButton',
                 element: <ManageButton></ManageButton>
+            },
+            {
+                path: 'myDeliveryList',
+                element: <MyDeliveryList></MyDeliveryList>
             }
         ]
     }

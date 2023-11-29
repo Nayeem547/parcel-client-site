@@ -202,10 +202,11 @@ const BookParcelForm = () => {
   }, [setValue]);
 
   return (
-    <div className=" flex mx-auto   ">
-      <form className=" grid grid-col-1 " onSubmit={handleSubmit(onSubmit)}>
+    <div className=" border  shadow-2xl flex flex-col justify-center items-center mx-auto  overflow-x-auto w  ">
+        <h2 className=" text-4xl font-semibold text-blue-950 py-10 " >Book parcel</h2>
+      <form className=" p-3 grid grid-col-1 " onSubmit={handleSubmit(onSubmit)}>
         {/* Render your form fields here */}
-        <div className=" flex gap-6 p-6  ">
+        <div className=" flex flex-col md:flex-row gap-6 p-6  ">
           <div className="form-control   ">
             <label className="label">
               <span className="label-text">Name</span>
@@ -244,7 +245,7 @@ const BookParcelForm = () => {
           </div>
         </div>
 
-        <div className=" flex gap-6 p-6  ">
+        <div className=" flex flex-col md:flex-row gap-6 p-6  ">
           <div className="form-control  ">
             <label className="label">
               <span className="label-text">Parcel Type</span>
@@ -381,11 +382,11 @@ const BookParcelForm = () => {
 
         </div>
 
-        <div className=" flex flex-col space-y-5 ">
+        <div className=" flex flex-col  space-y-5 w-96  ">
           {formData.deliveryAddressLatitude &&
             formData.deliveryAddressLongitude && (
               <Map
-                height={300}
+                height={200}
                 defaultCenter={[
                   parseFloat(formData.deliveryAddressLatitude),
                   parseFloat(formData.deliveryAddressLongitude),
@@ -393,7 +394,7 @@ const BookParcelForm = () => {
                 defaultZoom={11}
               >
                 <Marker
-                  width={50}
+                  width={1000}
                   anchor={[
                     parseFloat(formData.deliveryAddressLatitude),
                     parseFloat(formData.deliveryAddressLongitude),

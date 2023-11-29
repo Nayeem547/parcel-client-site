@@ -1,19 +1,17 @@
 import { NavLink, Outlet } from "react-router-dom";
-import {  FaBookOpen, FaBoxOpen, FaHome, FaShoppingBag, FaShoppingCart, FaUserCheck } from 'react-icons/fa';
+import {  FaAngleDoubleRight, FaBookOpen, FaBoxOpen, FaHome, FaShoppingBag, FaShoppingCart, FaUserCheck } from 'react-icons/fa';
 const Dashboard = () => {
     return (
         
              <div className=' flex '>
-            <div className=' w-64 min-h-screen bg-orange-400 '>
+            <div className=' w-64 min-h-screen bg-blue-950 text-white '>
               <ul className='menu p-4'>
 
               <li><NavLink  to="/dashboard/allParcel" > 
                 <FaShoppingBag></FaShoppingBag> All Parcel
                 </NavLink></li>
 
-              <li><NavLink  to="/dashboard/adminHome" > 
-                <FaHome></FaHome> Admin Home
-                </NavLink></li>
+              
 
               <li><NavLink  to="/dashboard/allUsers" > 
                 <FaHome></FaHome> All Users
@@ -39,6 +37,13 @@ const Dashboard = () => {
 
                 <li><NavLink  to="/" > 
                 <FaHome></FaHome> Home
+                </NavLink></li>
+
+               
+                <div className=" divider "></div>
+
+                <li><NavLink  to="/dashboard/myDeliveryList" > 
+                <FaAngleDoubleRight></FaAngleDoubleRight> My Delivery List
                 </NavLink></li>
 
 

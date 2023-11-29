@@ -86,6 +86,7 @@ const AllUsers = () => {
           <tbody> 
            {stats.map((state, index) =>  <tr key={state._id} >
            <th> {index + 1} </th>
+           
                 <td>{state?.userName}</td>
                 <td>{state?.phoneNumber}</td>
                 <td>{state?.quantity}</td>

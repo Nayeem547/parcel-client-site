@@ -86,8 +86,11 @@ const MyParcel = () => {
                   </div>
                 </td>
                 <td>{item.date}</td>
-                <td> $</td>
+                <td> {item.bookingDate}</td>
                 <td>{item.bookingDate}</td>
+                <td>{item.deliveryMan}</td>
+                <td>{item.status}</td>
+                
                 <th>
                  
                  
