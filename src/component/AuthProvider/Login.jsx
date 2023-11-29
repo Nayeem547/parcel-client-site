@@ -2,11 +2,10 @@
 
 
 import { useContext, useEffect, useRef, useState } from 'react';
-import { loadCaptchaEnginge, LoadCanvasTemplate,  validateCaptcha } from 'react-simple-captcha';
-import { AuthContext } from '../../Provider/AuthProvider';
+
 import { Link,  useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import SocialLogin from '../../Component/SocialLogin/SocialLogin';
+import { AuthContext } from './AuthProvider';
 
 
 
@@ -23,9 +22,7 @@ const Login = () => {
 
     const from = location.state?.from?.pathname || '/';
 
-    useEffect( () => {
-        loadCaptchaEnginge(6);
-    } , [])
+    
     
     const handleLogin = event => {
         event.preventDefault();
@@ -59,12 +56,7 @@ const Login = () => {
         })
     }  
 
-    const handleValidateCaptcha = () => {
-        const userCaptchavalue = CaptchaRef.current.value;
-        if(validateCaptcha(userCaptchavalue)){
-            setDisablad(false);
-        }
-    }
+  
 
     return (
         <div>
@@ -92,23 +84,14 @@ const Login = () => {
             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
           </label>
         </div>
-        <div className="form-control">
-          <label className="label">
-          <LoadCanvasTemplate />
-          </label>
-          <input type="text" ref={CaptchaRef} name="captcha" placeholder="type the text above" className="input input-bordered" required />
-          <label className="label">
-            <a href="#" className="label-text-alt link link-hover"></a>
-          </label>
-          <button onClick={handleValidateCaptcha} className=' btn btn-outline btn-xs '>Validate</button>
-        </div>
+        
         <div className="form-control mt-6">
           
-          <input disabled={disabled} type="submit"  value="Login" className="btn btn-primary"  />
+          <input  type="submit"  value="Login" className="btn btn-primary"  />
         </div>
       </form>
       <p className=' pb-2 ' ><small>New Here? <Link to="/signUp" >Create an Account</Link> </small></p>
-      <SocialLogin></SocialLogin>
+      
     </div>
    
   </div>

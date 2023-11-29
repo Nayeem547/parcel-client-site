@@ -8,6 +8,8 @@ import MyParcel from "../Dashboard/MyParcel";
 import MyProfile from "../Dashboard/MyProfile";
 import AllParcel from "../Dashboard/AllParcel";
 import AllUsers from "../Dashboard/AllUsers";
+import ManageButton from "../Dashboard/ManageButton";
+import Login from "../AuthProvider/Login";
 
 
 
@@ -23,6 +25,10 @@ export const router = createBrowserRouter([
             {
                 path: '/signUp',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
             }
         ]
     },
@@ -49,6 +55,10 @@ export const router = createBrowserRouter([
             {
                 path: 'allUsers',
                 element: <AllUsers></AllUsers>
+            },
+            {
+                path: 'manageButton',
+                element: <ManageButton></ManageButton>
             }
         ]
     }

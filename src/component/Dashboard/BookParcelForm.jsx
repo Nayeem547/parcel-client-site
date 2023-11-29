@@ -100,6 +100,8 @@ const BookParcelForm = () => {
       latitude: data.latitude,
       longitude: data.longitude,
       price: parseFloat(data.price),
+      status: "pending",
+      
     };
 
     const menuRes = await axiosSecure.post("/order", menuItem, {
@@ -111,7 +113,7 @@ const BookParcelForm = () => {
     if (menuRes.data.insertedId) {
       Swal.fire({
         icon: "success",
-        title: `${data.name} is add to the menu`,
+        title: `${users.name} is add to the menu`,
         showConfirmButton: false,
         timer: 1500,
       });
