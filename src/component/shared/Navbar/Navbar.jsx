@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import logo from '../../../assets/Picsart_23-11-24_17-20-43-390.png'
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { FaBell, FaRegBell } from "react-icons/fa";
 const Navbar = () => {
     
     const { user, logOut } = useContext(AuthContext);
@@ -22,26 +23,12 @@ const Navbar = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/dashboard">Dashboard</Link>
+            <FaRegBell className=" text-yellow-500 text-2xl " ></FaRegBell>  
           </li>
     
           
           
     
-          {user ? (
-            <>
-              <button onClick={handleLogOut} className=" btn btn-ghost ">
-                logOut
-              </button>
-            </>
-          ) : (
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-          )}
-          <li>
-            <Link to="/signUp">SignUp</Link>
-          </li>
         </>
       );
     
@@ -91,6 +78,59 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
              
+             <div className=" flex gap-6 pr-10 justify-center items-center " >
+
+             
+            {user ? (
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="btn btn-ghost w-16  btn-circle avatar">
+                <div className=" rounded-full">
+                  <img className=" " src={user.photoURL} />
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="mt-3 z-[1] p-4  font-semibold space-y-4  shadow menu menu-sm dropdown-content text-xl text-center bg-base-100 text-black rounded-box w-52"
+              >
+                <li className=" font-serif  ">
+                    {user.displayName}
+                </li>
+               <li className=" text-2xl ">
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
+
+                
+
+                
+                <li
+                  className=" text-white text-md font-normal hover:bg-red-900 text-center rounded-lg bg-red-600 border px-1 py-1 "
+                  onClick={handleLogOut}
+                >
+                  LogOut
+                </li>
+              </ul>
+            </div>
+          ) : (
+
+            <div className=" flex gap-4 ">
+          <div>
+        <Link to="/login">
+              <button className=" btn "> Login</button>
+            </Link> 
+            </div>
+             
+            </div>
+
+           
+            
+          )}
+          <div>
+          <li>
+            <Link to="/signUp">SignUp</Link>
+          </li>
+          </div>
+
+          </div>
               
             </div>
           </div>

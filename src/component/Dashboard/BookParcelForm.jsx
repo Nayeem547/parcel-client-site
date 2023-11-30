@@ -5,12 +5,12 @@ import { Controller, useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
-import useaxiosSecure from "../Hook/useaxiosSecure";
+import UseAxiosPublic from "../Hook/UseAxiosPublic";
 
 const BookParcelForm = () => {
   const { control, register, handleSubmit, setValue } = useForm();
   const { user } = useContext(AuthContext);
-  const axiosSecure = useaxiosSecure();
+  const axiosPublic = UseAxiosPublic();
 
   const [formData, setFormData] = useState({
     // Auto-filled from the logged-in user
@@ -104,7 +104,7 @@ const BookParcelForm = () => {
       
     };
 
-    const menuRes = await axiosSecure.post("/order", menuItem, {
+    const menuRes = await axiosPublic.post("/order", menuItem, {
       headers: {
         'Content-Type': 'application/json'
       },

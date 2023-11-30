@@ -1,5 +1,5 @@
 
-import bannerImg from '../../assets/1000_F_418952916_A99PSkGkH88kviQWRpGp53vw8obirf5r.jpg'
+import bannerImg from '../../assets/banner.jpg'
 
 
 const Banner = () => {

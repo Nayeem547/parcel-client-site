@@ -1,18 +1,18 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
-import useaxiosSecure from '../Hook/useaxiosSecure';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import { FaRegSmile, FaSurprise, FaTags, FaTrashAlt } from 'react-icons/fa';
+import UseAxiosPublic from '../Hook/UseAxiosPublic';
 
 const MyDeliveryList = () => {
     const {user} = useContext(AuthContext);
-    const axiosSecure = useaxiosSecure();
-
+    
+const axiosPublic = UseAxiosPublic();
   const { refetch, data: deliveries = [] } = useQuery({
     queryKey: ['delivery-stats'],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/delivery-stats/${user?.email}`); // Replace with your API endpoint to fetch deliveries assigned to the logged-in delivery man
+      const res = await axiosPublic.get(`/delivery-stats/${user?.email}`); // Replace with your API endpoint to fetch deliveries assigned to the logged-in delivery man
       return res.data;
     },
   });

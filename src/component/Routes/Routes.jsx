@@ -11,6 +11,12 @@ import AllUsers from "../Dashboard/AllUsers";
 import ManageButton from "../Dashboard/ManageButton";
 import Login from "../AuthProvider/Login";
 import MyDeliveryList from "../Dashboard/MyDeliveryList";
+import ParcelSefty from "../Home-Page/OurFeatures/ParcelSefty";
+import DeliveredTotal from "../Home-Page/OurFeatures/DeliveredTotal";
+import TotalUsers from "../Home-Page/OurFeatures/TotalUsers";
+import ErrorPage from "../Home-Page/ErrorPage";
+import AdminRout from "./AdminRout";
+import DeliveryRoute from "./DeliveryRoute";
 
 
 
@@ -18,7 +24,12 @@ export const router = createBrowserRouter([
     {
         path: '/',
         element: <Layout></Layout>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
+            {
+               path: '/error',
+               element: <ErrorPage></ErrorPage>
+            },
             {
                 path: '/',
                 element: <Home></Home>
@@ -30,6 +41,18 @@ export const router = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login></Login>
+            },
+            {
+                path: '/parcelSefty',
+                element: <ParcelSefty></ParcelSefty>
+            },
+            {
+                path: '/totalDelivery',
+                element: <DeliveredTotal></DeliveredTotal>
+            },
+            {
+                path: '/totalUser',
+                element: <TotalUsers></TotalUsers>
             }
         ]
     },
@@ -51,11 +74,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'allParcel',
-                element: <AllParcel></AllParcel>
+                element: <AdminRout><AllParcel></AllParcel></AdminRout>
             },
             {
                 path: 'allUsers',
-                element: <AllUsers></AllUsers>
+                element: <AdminRout><AllUsers></AllUsers></AdminRout>
             },
             {
                 path: 'manageButton',
