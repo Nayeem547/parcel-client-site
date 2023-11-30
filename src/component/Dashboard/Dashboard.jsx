@@ -1,14 +1,22 @@
 import { NavLink, Outlet } from "react-router-dom";
 import {  FaAngleDoubleRight, FaBookOpen, FaBoxOpen, FaHome, FaShoppingBag, FaShoppingCart, FaUserCheck } from 'react-icons/fa';
 import UseAdmin from "../Hook/UseAdmin";
+import { Helmet } from "react-helmet";
 
 
 const Dashboard = () => {
     const [isAdmin] = UseAdmin();
     
     return (
+
+        <div>
+           <Helmet>
+             <title>Delivery-Express | Dashboard</title>
+           </Helmet>
+        
         
              <div className=' flex '>
+
             <div className=' w-64 min-h-screen bg-blue-950 text-white '>
               <ul className='menu p-4'>
 
@@ -85,7 +93,7 @@ const Dashboard = () => {
 
               </div>
     
-        
+              </div>
     );
 };
 
