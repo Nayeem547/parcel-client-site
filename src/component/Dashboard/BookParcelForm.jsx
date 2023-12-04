@@ -284,7 +284,7 @@ const BookParcelForm = () => {
 
           <div className="form-control  ">
             <label className="label">
-              <span className="label-text">Receivers Phone Number</span>
+              <span className="label-text">Booking date</span>
             </label>
             <input {...register("bookingDate")}  type="text" readOnly />
           </div>

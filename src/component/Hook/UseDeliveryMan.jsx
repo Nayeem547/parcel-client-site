@@ -12,7 +12,7 @@ const UseDeliveryMan = () => {
         enabled: !loading ,
         queryFn: async() => {
             console.log('asking or checking is delivery', user)
-            const res = await axiosPublic.get(`/users/admin/${user.email}`);
+            const res = await axiosPublic.get(`/users/deliveryMan/${user.email}`);
             return res.data.deliveryMan;
         }
     })

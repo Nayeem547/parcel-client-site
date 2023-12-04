@@ -5,6 +5,7 @@ import img2 from '../../assets/img2.jpg'
 import img3 from '../../assets/img3jpg.jpg'
 import img4 from '../../assets/img4jpg.jpg'
 import img5 from '../../assets/img6.jpg'
+import Rateing from "../ReactRating/Rateing";
 
 const TopDeliveryMan = () => {
   return (
@@ -21,6 +22,7 @@ const TopDeliveryMan = () => {
      <h2 className="card-title text-2xl ">Shakib</h2>
       <p>Number of parcel Delivered: 10</p>
       <p>Average Ratings: 4</p>
+     
     
      </div>
      </div>

@@ -1,0 +1,16 @@
+.star-rating {
+    display: flex;
+  }
+  
+  .star {
+    color: #ffd700; /* Set your default star color */
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  .star.selected {
+    color: #ff9900; /* Set your selected star color */
+  }
+  
+  

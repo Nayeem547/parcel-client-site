@@ -18,6 +18,8 @@ import ErrorPage from "../Home-Page/ErrorPage";
 import AdminRout from "./AdminRout";
 import DeliveryRoute from "./DeliveryRoute";
 import TopDeliveryMan from "../Home-Page/TopDeliveryMan";
+import MyReview from "../Dashboard/MyReview";
+import AllDeliveryMan from "../Dashboard/AllDeliveryMan";
 
 
 
@@ -76,11 +78,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'allParcel',
-                element: <AdminRout><AllParcel></AllParcel></AdminRout>
+                element: <AllParcel></AllParcel>
             },
             {
                 path: 'allUsers',
-                element: <AdminRout><AllUsers></AllUsers></AdminRout>
+                element: <AllUsers></AllUsers>,
+                loader: () => fetch('https://parcel-server-site.vercel.app/productsCount'),
             },
             {
                 path: 'manageButton',
@@ -89,6 +92,14 @@ export const router = createBrowserRouter([
             {
                 path: 'myDeliveryList',
                 element: <MyDeliveryList></MyDeliveryList>
+            },
+            {
+                path: 'myReviews',
+                element: <MyReview></MyReview>
+            },
+            {
+                path: 'allDeliveryMan',
+                element: <AllDeliveryMan></AllDeliveryMan>
             }
         ]
     }
